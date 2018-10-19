@@ -1,8 +1,10 @@
 #include<stdio.h>
-
+//To Display Output
 void display(int n){
     printf("There Are :-%d Page Faults\n",n);
 }
+
+//To Display Array
 void disp(int a[],int length){
     for(int i=0;i<length;i++){
         printf("%d ",a[i]);
@@ -10,7 +12,7 @@ void disp(int a[],int length){
     printf("\n");
 }
 
-
+//To Search For Page returns index if present  else -1
 int search(int page,int frames[],int framelen){
      int a=-1;
      for(int i=0;i<framelen;i++){
@@ -22,17 +24,21 @@ int search(int page,int frames[],int framelen){
      return a;
 }
 
+//Initializes The Frame To -1
 void initialize(int frames[],int framelen){
     for(int i=0;i<framelen;i++){
         frames[i]=-1;
     }
 }
 
+//For LRU initializes to a Large Number
 void initialize_max(int frames[],int framelen){
     for(int i=0;i<framelen;i++){
         frames[i]=10;
     }
 }
+
+//To Find The Least Frequently Used Page (Excludes The Last Changed Page)
 int min(int least[],int framelen,int lastChanged){
     int m=0;
     for(int i=1;i<framelen;i++){
@@ -43,6 +49,8 @@ int min(int least[],int framelen,int lastChanged){
 
     return m;
 }
+
+//To Find The Least Recently Used Page
 int max(int least[],int framelen){
       int m=0;
       for(int i=1;i<framelen;i++){
@@ -54,6 +62,9 @@ int max(int least[],int framelen){
       return m;
 
 }
+
+
+//Increments Each Values Except The Index Value
 void increment_except_index(int least[],int framelen,int index){
 
    for(int i=0;i<framelen;i++){
@@ -66,7 +77,7 @@ void increment_except_index(int least[],int framelen,int index){
 
 }
 
-
+//Returns The Page Faults If FIFO PR Is Used 
 void fifo(int ref[],int reflength,int framelen){
     int fault=0;
     int frames[framelen];
@@ -88,6 +99,7 @@ void fifo(int ref[],int reflength,int framelen){
 }
 
 //In This Code You Maintain An Array From Which We Can Find The Least Recently Used Page
+//Returns Pade Fault When LRU Algorithm Is Used 
 void lru(int ref[],int reflength,int framelen){
     int fault=0,index;
 
@@ -123,6 +135,7 @@ void lru(int ref[],int reflength,int framelen){
 
 //In LFU you cannout swap out the last changed frame
 //In this code you maintain an array for saving the frequency count of each respective page
+//Returns The Page Fault For LFU PR Algorithm
 void lfu(int ref[],int reflength,int framelen){
     int fault=0;
     int frames[framelen];
