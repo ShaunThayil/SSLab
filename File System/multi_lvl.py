@@ -7,7 +7,7 @@ def findPath(path):
     if(path[0]!='root'):    # If Not Root There Is An Error In Path
         return False
     next=dir                #Set A Variable Pointing To The Root Directory
-    if(len(path)==1):
+    if(path=='root/'):
         return next
     del path[0]    #No Need Of Root
     for i in path:
